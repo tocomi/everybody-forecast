@@ -1,0 +1,7 @@
+<h1>Welcome#index</h1>
+<p>Find me in app/views/welcome/index.html.erb</p>
+<p>
+<% @race_list.each do |race| %>
+[レース] <%= race['title'] %> [詳細] <%= race['detail'] %><br />
+<% end %>
+</p>
