@@ -1,7 +1,13 @@
 <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p>
+<div>
+  <% @race_header.each do |header| %>
+    <button type="button" class="btn btn-primary race-date"><%= header[:date] %></button>
+    <p style="display:none"><%= header[:url] %></p>
+  <% end %>
+</div>
 <p>
-<% @race_list.each do |race| %>
-[レース] <%= race['title'] %> [詳細] <%= race['detail'] %><br />
-<% end %>
+  <% @race_list.each do |race| %>
+    [レース] <%= race[:title] %> [詳細] <%= race[:detail] %><br/>
+  <% end %>
 </p>
