@@ -1,6 +1,7 @@
 # README
 
-Author: tocomi
+Project Name: everybody_forecast
+      Author: tocomi
 
 Things you may want to cover:
 
