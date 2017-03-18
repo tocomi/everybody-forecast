@@ -19,10 +19,10 @@ def get_race_header
   return @race_header
 end
 
-def get_race_list
+def get_race_list(query)
 
   # スクレイピング先のURL
-  url = 'http://race.netkeiba.com/?pid=race_list&'
+  url = "http://race.netkeiba.com#{query}"
   doc = doc_parser(url)
     
   @race_list = []
