@@ -2,12 +2,8 @@
 <p>Find me in app/views/welcome/index.html.erb</p>
 <div>
   <% @race_header.each do |header| %>
-    <button type="button" class="btn btn-primary race-date"><%= header[:date] %></button>
-    <p style="display:none"><%= header[:url] %></p>
+    <button type="button" class="btn btn-primary race-date">
+      <%= link_to header[:date], welcome_race_list_path(target: header[:url]) %>
+    </button>
   <% end %>
 </div>
-<p>
-  <% @race_list.each do |race| %>
-    [レース] <%= race[:title] %> [詳細] <%= race[:detail] %><br/>
-  <% end %>
-</p>
