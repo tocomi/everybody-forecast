@@ -1,0 +1,9 @@
+<h1>Welcome#index</h1>
+<p>Find me in app/views/welcome/index.html.erb</p>
+<div>
+  <% @race_header.each do |header| %>
+    <button type="button">
+      <%= link_to header[:date], horse_race_race_list_path(target: header[:url]), class: 'btn btn-primary race-date' %>
+    </button>
+  <% end %>
+</div>

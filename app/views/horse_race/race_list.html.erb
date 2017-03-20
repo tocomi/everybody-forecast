@@ -1,0 +1,7 @@
+<div>
+  <% @race_list.each do |race| %>
+    <button type="button">
+      <%= link_to "#{race[:title]} #{race[:detail]}", horse_race_horse_list_path(target: race[:url]), class: 'btn btn-primary race-detail' %>
+    </button>
+  <% end %>
+</div>
