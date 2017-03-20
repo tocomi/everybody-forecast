@@ -31,10 +31,29 @@ def get_race_list(query)
     race = {}
     race[:title] = node.css(".racename").css("a").attribute("title").value
     race[:detail] = node.css(".racedata").inner_text
+    race[:url] = node.css("dt").css("a").attribute("href").value
     @race_list[index] = race
     index = index + 1
   end
   return @race_list
+
+end
+
+def get_horse_list(query)
+
+  # スクレイピング先のURL
+  url = "http://race.netkeiba.com#{query}"
+  doc = doc_parser(url)
+    
+  @horse_list = []
+  index = 0
+  doc.css("#race_main").css(".shutuba_table").css("tr").each do |node|
+    horse = {}
+    horse[:horse_name] = node.css(".h_name").css("a").inner_text
+    @horse_list[index] = horse
+    index = index + 1
+  end
+  return @horse_list
 
 end
 
