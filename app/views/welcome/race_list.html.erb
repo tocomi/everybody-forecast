@@ -1,7 +1,0 @@
-<div>
-  <% @race_list.each do |race| %>
-    <button type="button" class="btn btn-primary race-detail">
-      <%= link_to "#{race[:title]} #{race[:detail]}", welcome_race_list_path %>
-    </button>
-  <% end %>
-</div>
