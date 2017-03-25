@@ -6,7 +6,7 @@ def get_race_header
   # スクレイピング先のURL
   url = 'http://race.netkeiba.com/?pid=race_list&'
   doc = doc_parser(url)
-  
+
   @race_header = []
   index = 0
   doc.css("#race_list_header").css("dd").each do |node|
@@ -24,7 +24,7 @@ def get_race_list(query)
   # スクレイピング先のURL
   url = "http://race.netkeiba.com#{query}"
   doc = doc_parser(url)
-    
+
   @race_list = []
   index = 0
   doc.css("#race_list_body").css(".race_top_hold_list").css("li").each do |node|
@@ -44,20 +44,29 @@ def get_horse_list(query)
   # スクレイピング先のURL
   url = "http://race.netkeiba.com#{query}"
   doc = doc_parser(url)
-    
+
   @horse_list = []
   index = 0
   doc.css("#race_main").css(".shutuba_table").css("tr").each do |node|
-    horse = {}
-    horse[:horse_name] = node.css(".h_name").css("a").inner_text
-    @horse_list[index] = horse
+    if index == 0 then # header
+      header = {}
+      logger.debug 'header'
+    else # content
+      horse = {}
+      horse[:gate_number] = node.css("td")[0].css("span").text
+      horse[:horse_number] = node.css(".umaban").text
+      horse[:horse_name] = node.css(".h_name").css("a").inner_text
+      # index:0 はヘッダーが入ってひとつずれるので-1している
+      @horse_list[index - 1] = horse
+      logger.debug "horse: #{horse}"
+    end
     index = index + 1
   end
   return @horse_list
 
 end
 
-def doc_parser(url)  
+def doc_parser(url)
   html = open(url).read
   # htmlをパース(解析)してオブジェクトを作成
   return Nokogiri::HTML.parse(html.toutf8, nil, 'utf-8')

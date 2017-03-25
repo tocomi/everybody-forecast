@@ -1,5 +1,13 @@
 <div>
-  <% @horse_list.each do |horse| %>
-    <li><%= "#{horse[:horse_name]}" %></li>
-  <% end %>
+  <table>
+    <tbody>
+      <% @horse_list.each do |horse| %>
+        <tr>
+          <td class="horse-table gate-number"><%= "#{horse[:gate_number]}" %></td>
+          <td class="horse-table horse-number"><%= "#{horse[:horse_number]}" %></td>
+          <td class="horse-table horse-name"><%= "#{horse[:horse_name]}" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
