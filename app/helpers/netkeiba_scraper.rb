@@ -25,18 +25,29 @@ def get_race_list(query)
   url = "http://race.netkeiba.com#{query}"
   doc = doc_parser(url)
 
-  @race_list = []
-  index = 0
-  doc.css("#race_list_body").css(".race_top_hold_list").css("li").each do |node|
-    race = {}
-    race[:title] = node.css(".racename").css("a").attribute("title").value
-    race[:detail] = node.css(".racedata").inner_text
-    race[:url] = node.css("dt").css("a").attribute("href").value
-    @race_list[index] = race
-    index = index + 1
+  @race_per_place_list = []
+  index_per_place = 0
+  doc.css("#race_list_body").css(".race_top_hold_list").each do |day_node|
+    index = 0
+    race_list = []
+    race_place_info = {}
+    race_place_info[:date] = day_node.css(".race_top_hold_data").css(".kaisaidata").inner_text
+    race_place_info[:condition] = day_node.css(".race_top_hold_data").css(".jyodata").inner_text
+    day_node.css("li").each do |node|
+      race = {}
+      race[:title] = node.css(".racename").css("a").attribute("title").value
+      race[:detail] = node.css(".racedata").inner_text
+      race[:url] = node.css("dt").css("a").attribute("href").value
+      race_list[index] = race
+      index = index + 1
+    end
+    race_per_place = {}
+    race_per_place[:race_place_info] = race_place_info
+    race_per_place[:race_list] = race_list
+    @race_per_place_list[index_per_place] = race_per_place
+    index_per_place = index_per_place + 1
   end
-  return @race_list
-
+  return @race_per_place_list
 end
 
 def get_horse_list(query)
@@ -68,7 +79,6 @@ def get_horse_list(query)
     index = index + 1
   end
   return @horse_list
-
 end
 
 def doc_parser(url)
