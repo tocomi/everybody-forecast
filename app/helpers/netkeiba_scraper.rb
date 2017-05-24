@@ -56,6 +56,11 @@ def get_horse_list(query)
       horse[:gate_number] = node.css("td")[0].css("span").text
       horse[:horse_number] = node.css(".umaban").text
       horse[:horse_name] = node.css(".h_name").css("a").inner_text
+      age_handi_jockey = node.css(".txt_l")[1].inner_text
+      age_handi_jockey_array = age_handi_jockey.split(" ")
+      horse[:horse_age] = age_handi_jockey_array[0]
+      horse[:horse_handi] = age_handi_jockey_array[1]
+      horse[:horse_jockey] = age_handi_jockey_array[2]
       # index:0 はヘッダーが入ってひとつずれるので-1している
       @horse_list[index - 1] = horse
       logger.debug "horse: #{horse}"
