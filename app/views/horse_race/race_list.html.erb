@@ -1,0 +1,18 @@
+<div>
+
+  <% @race_per_place_list.each do |race_per_place| %>
+    <div class="race-per-place-div panel panel-default">
+      <div class="panel-heading align-center">
+        <p class="race-count"><%= race_per_place[:race_place_info][:date] %></p>
+        <p class="race-condition"><%= race_per_place[:race_place_info][:condition] %></p>
+      </div>
+      <% race_per_place[:race_list].each do |race| %>
+        <button type="button">
+          <%= link_to horse_race_horse_list_path(target: race[:url]), class: 'btn btn-primary race-detail' do %>
+            <%= race[:title] %><br><%= race[:detail] %>
+          <% end %>
+        </button>
+      <% end %>
+    </div>
+  <% end %>
+</div>
