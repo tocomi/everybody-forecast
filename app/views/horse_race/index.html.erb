@@ -5,9 +5,7 @@
   <div class="panel-heading align-center">開催日一覧</div>
   <div class="panel-body">
     <% @race_header.each do |header| %>
-      <button type="button">
-        <%= link_to header[:date], horse_race_race_list_path(target: header[:url]), class: 'btn btn-primary race-date-button' %>
-      </button>
+      <%= link_to header[:date], horse_race_race_list_path(target: header[:url]), class: 'btn btn-primary race-date-button' %>
     <% end %>
   </div>
 </div>
