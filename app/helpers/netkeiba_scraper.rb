@@ -38,6 +38,7 @@ def get_race_list(query)
       race[:title] = node.css(".racename").css("a").attribute("title").value
       race[:detail] = node.css(".racedata").inner_text
       race[:url] = node.css("dt").css("a").attribute("href").value
+      race[:number] = get_race_number(race[:url])
       race_list[index] = race
       index = index + 1
     end
@@ -48,6 +49,10 @@ def get_race_list(query)
     index_per_place = index_per_place + 1
   end
   return @race_per_place_list
+end
+
+def get_race_number(url)
+  race_number = url[-2..-1].to_i
 end
 
 def get_horse_list(query)
