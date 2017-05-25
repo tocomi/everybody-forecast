@@ -1,3 +1,12 @@
+<div class="race-date-div-wide panel panel-info">
+  <div class="panel-heading align-center">開催日一覧</div>
+  <div class="panel-body">
+    <% @race_header.each do |header| %>
+      <%= link_to header[:date], horse_race_race_list_path(target: header[:url]), class: 'btn btn-primary race-date-button-wide' %>
+    <% end %>
+  </div>
+</div>
+
 <div>
   <% @race_per_place_list.each do |race_per_place| %>
     <div class="race-per-place-div panel panel-default">
