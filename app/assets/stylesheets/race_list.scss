@@ -6,15 +6,28 @@
 .race-per-place-div {
   float: left;
   margin-left: 5px;
-  width: 270px;
+  width: 305px;
 }
 
 .race-detail {
-  margin-left: 10px;
+  margin-left: 5px;
   margin-top: 5px;
   width: 250px;
 }
 
 .race-count {
   font-size: 20px;
+}
+
+.race-number-div {
+  float: left;
+  height: 53px;
+  width: 35px;
+  margin-left: 5px;
+  margin-top: 5px;
+  border-radius: 10px;
+}
+
+.race-number {
+  margin-top: 15px;
 }
