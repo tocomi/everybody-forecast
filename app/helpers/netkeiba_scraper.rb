@@ -61,6 +61,9 @@ def get_horse_list(query)
   url = "http://race.netkeiba.com#{query}"
   doc = doc_parser(url)
 
+  # 
+
+  # 出走馬データの取得
   @horse_list = []
   index = 0
   doc.css("#race_main").css(".shutuba_table").css("tr").each do |node|
