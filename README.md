@@ -1,24 +1,3 @@
-# README
-
-Project Name: everybody_forecast
-      Author: tocomi
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Project Name: everybody_forecast
+#### Author: tocomi
+#### URL: [heroku-app](https://damp-spire-65299.herokuapp.com/)
