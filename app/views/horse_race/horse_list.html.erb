@@ -2,6 +2,7 @@
   <table class="table table-bordered table-hover table-striped">
     <thead>
       <tr>
+        <th class="header align-center">予想</th>
         <th class="header align-center">枠番</th>
         <th class="header align-center">馬番</th>
         <th class="header align-center">馬名</th>
@@ -13,6 +14,11 @@
     <tbody>
       <% @horse_list.each do |horse| %>
         <tr>
+          <td class="horse-table forecast">
+            <% if !horse[:gate_number].empty? then %>
+              <%= select :mark, :key, {"-" => 0, "◎" => 5, "○" => 4, "▲" => 3, "△" => 2, "☆" => 1} %>
+            <% end %>
+          </td>
           <td class="horse-table gate-number"><%= "#{horse[:gate_number]}" %></td>
           <td class="horse-table horse-number"><%= "#{horse[:horse_number]}" %></td>
           <td class="horse-table horse-name"><%= "#{horse[:horse_name]}" %></td>
