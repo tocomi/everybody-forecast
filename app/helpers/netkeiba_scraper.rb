@@ -53,6 +53,10 @@ end
 
 def get_race_number(url)
   race_number = url[-2..-1].to_i
+  if race_number == 0 then
+    race_number = url.split("&")[1][-2..-1].to_i
+  end
+  return race_number
 end
 
 def get_horse_list(query)
@@ -60,8 +64,6 @@ def get_horse_list(query)
   # スクレイピング先のURL
   url = "http://race.netkeiba.com#{query}"
   doc = doc_parser(url)
-
-  # 
 
   # 出走馬データの取得
   @horse_list = []
