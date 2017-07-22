@@ -2,6 +2,10 @@ class HorseRaceController < ApplicationController
   require 'uri'
   require_relative './../helpers/netkeiba_scraper'
 
+  # flag for display combobox
+  @exists_forecast
+  @forecast_select
+
   def index
     get_race_header()
   end
@@ -16,12 +20,18 @@ class HorseRaceController < ApplicationController
   def horse_list()
     adjusted_target = adjust_target(params[:target])
     get_horse_list(adjusted_target)
+    get_forecast(adjusted_target)
   end
 
   def adjust_target(target)
     target = target.gsub("race_old", "race")
     target = target << "&mode=shutuba"
     return target
+  end
+
+  def get_forecast(target)
+    race_id = target.split("&")[1][-12..-1].to_i
+    @forecasts = Forecast.where(race_id: race_id)
   end
 
 end

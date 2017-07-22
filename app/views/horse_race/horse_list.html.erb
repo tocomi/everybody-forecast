@@ -15,8 +15,18 @@
       <% @horse_list.each do |horse| %>
         <tr>
           <td class="horse-table forecast">
+            <% @forecast_select  = { "-" => 0, "◎" => 5, "○" => 4, "▲" => 3, "△" => 2, "☆" => 1 } %>
             <% if !horse[:gate_number].empty? then %>
-              <%= select :mark, :key, {"-" => 0, "◎" => 5, "○" => 4, "▲" => 3, "△" => 2, "☆" => 1} %>
+              <% @exists_forecast = false %>
+              <% @forecasts.each do |forecast| %>
+                <% if forecast[:horse_number].to_i == horse[:horse_number].to_i then %>
+                  <%= select :mark, :key, @forecast_select, :selected => forecast[:mark], class: 'select-mark' %>
+                  <% @exists_forecast = true %>
+                <% end %>
+              <% end %>
+              <% if @exists_forecast == false %>
+                <%= select :mark, :key, @forecast_select, class: 'select-mark' %>
+              <% end %>
             <% end %>
           </td>
           <td class="horse-table gate-number"><%= "#{horse[:gate_number]}" %></td>
