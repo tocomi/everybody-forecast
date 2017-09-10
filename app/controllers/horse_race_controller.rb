@@ -2,6 +2,8 @@ class HorseRaceController < ApplicationController
   require 'uri'
   require_relative './../helpers/netkeiba_scraper'
 
+  # forecast data
+  @forecasts
   # flag for display combobox
   @exists_forecast
   @forecast_select
@@ -32,6 +34,10 @@ class HorseRaceController < ApplicationController
   def get_forecast(target)
     race_id = target.split("&")[1][-12..-1].to_i
     @forecasts = Forecast.where(race_id: race_id)
+  end
+
+  def save_forecast()
+    
   end
 
 end
