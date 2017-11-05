@@ -5,6 +5,7 @@
         <th class="header align-center">枠番</th>
         <th class="header align-center">馬番</th>
         <th class="header align-center">馬名</th>
+        <th class="header align-center">性別</th>
         <th class="header align-center">馬齢</th>
         <th class="header align-center">斤量</th>
         <th class="header align-center">騎手</th>
@@ -14,9 +15,45 @@
     <tbody>
       <% @horse_list.each do |horse| %>
         <tr>
-          <td class="horse-table gate-number"><%= "#{horse[:gate_number]}" %></td>
-          <td class="horse-table horse-number"><%= "#{horse[:horse_number]}" %></td>
+          <% if horse[:gate_number] == '1' %>
+            <td class="horse-table gate-number background-white"><%= "#{horse[:gate_number]}" %></td>
+            <td class="horse-table horse-number background-white"><%= "#{horse[:horse_number]}" %></td>
+          <% elsif horse[:gate_number] == '2' %>
+            <td class="horse-table gate-number background-black"><%= "#{horse[:gate_number]}" %></td>
+            <td class="horse-table horse-number background-black"><%= "#{horse[:horse_number]}" %></td>
+          <% elsif horse[:gate_number] == '3' %>
+            <td class="horse-table gate-number background-red"><%= "#{horse[:gate_number]}" %></td>
+            <td class="horse-table horse-number background-red"><%= "#{horse[:horse_number]}" %></td>
+          <% elsif horse[:gate_number] == '4' %>
+            <td class="horse-table gate-number background-blue"><%= "#{horse[:gate_number]}" %></td>
+            <td class="horse-table horse-number background-blue"><%= "#{horse[:horse_number]}" %></td>
+          <% elsif horse[:gate_number] == '5' %>
+            <td class="horse-table gate-number background-yellow"><%= "#{horse[:gate_number]}" %></td>
+            <td class="horse-table horse-number background-yellow"><%= "#{horse[:horse_number]}" %></td>
+          <% elsif horse[:gate_number] == '6' %>
+            <td class="horse-table gate-number background-green"><%= "#{horse[:gate_number]}" %></td>
+            <td class="horse-table horse-number background-green"><%= "#{horse[:horse_number]}" %></td>
+          <% elsif horse[:gate_number] == '7' %>
+            <td class="horse-table gate-number background-orange"><%= "#{horse[:gate_number]}" %></td>
+            <td class="horse-table horse-number background-orange"><%= "#{horse[:horse_number]}" %></td>
+          <% elsif horse[:gate_number] == '8' %>
+            <td class="horse-table gate-number background-pink"><%= "#{horse[:gate_number]}" %></td>
+            <td class="horse-table horse-number background-pink"><%= "#{horse[:horse_number]}" %></td>
+          <% else %>
+            <td class="horse-table gate-number"><%= "#{horse[:gate_number]}" %></td>
+            <td class="horse-table horse-number"><%= "#{horse[:horse_number]}" %></td>
+          <% end %>
+
           <td class="horse-table horse-name"><%= "#{horse[:horse_name]}" %></td>
+
+          <% if horse[:horse_sex] == '♂' %>
+            <td class="horse-table horse-sex background-blue"><%= "#{horse[:horse_sex]}" %></td>
+          <% elsif horse[:horse_sex] == '♀' %>
+            <td class="horse-table horse-sex background-red"><%= "#{horse[:horse_sex]}" %></td>
+          <% else %>
+            <td class="horse-table horse-sex"><%= "#{horse[:horse_sex]}" %></td>
+          <% end %>
+
           <td class="horse-table horse-age"><%= "#{horse[:horse_age]}" %></td>
           <td class="horse-table horse-handi"><%= "#{horse[:horse_handi]}" %></td>
           <td class="horse-table horse-jockey"><%= "#{horse[:horse_jockey]}" %></td>

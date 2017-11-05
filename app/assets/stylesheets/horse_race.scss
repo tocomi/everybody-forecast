@@ -7,10 +7,53 @@
 }
 
 table, td, th {
-  border: 2px #0088FF solid;
   -webkit-writing-mode: vertical-rl;
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
   text-orientation: upright;
   vertical-align: middle !important;
+
+  .horse-number, .horse-age, .horse-handi {
+    text-combine-upright: all;
+  }
+}
+
+.background-white {
+  background-color: #ffffff;
+  color: black;
+}
+
+.background-black {
+  background-color: #333333;
+  color: white;
+}
+
+.background-red {
+  background-color: #dc3c3c;
+  color: white;
+}
+
+.background-blue {
+  background-color: #2c53a9;
+  color: white;
+}
+
+.background-yellow {
+  background-color: #e4ca3b;
+  color: white;
+}
+
+.background-green {
+  background-color: #58af4a;
+  color: white;
+}
+
+.background-orange {
+  background-color: #de8a26;
+  color: white;
+}
+
+.background-pink {
+  background-color: #dc6179;
+  color: white;
 }
