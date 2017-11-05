@@ -79,7 +79,11 @@ def get_horse_list(query)
       horse[:horse_name] = node.css(".h_name").css("a").inner_text
       age_handi_jockey = node.css(".txt_l")[1].inner_text
       age_handi_jockey_array = age_handi_jockey.split(" ")
-      horse[:horse_age] = age_handi_jockey_array[0]
+      horse_sex_age = get_horse_age(age_handi_jockey_array[0])
+      horse_sex = convert_sex_mark(horse_sex_age.slice(0))
+      horse_age = horse_sex_age.slice(1)
+      horse[:horse_sex] = horse_sex
+      horse[:horse_age] = horse_age
       horse[:horse_handi] = age_handi_jockey_array[1]
       horse[:horse_jockey] = age_handi_jockey_array[2]
       # index:0 はヘッダーが入ってひとつずれるので-1している
@@ -95,4 +99,17 @@ def doc_parser(url)
   html = open(url).read
   # htmlをパース(解析)してオブジェクトを作成
   return Nokogiri::HTML.parse(html.toutf8, nil, 'utf-8')
+end
+
+def get_horse_age(age_and_color)
+  return age_and_color.split("/")[0]
+end
+
+def convert_sex_mark(sex)
+  if sex == '牡'
+    return '♂'
+  elsif sex == '牝'
+    return '♀'
+  end
+  return sex
 end
