@@ -1,4 +1,7 @@
 <div>
+  <div>
+    <%= link_to 'netkeiba', "http://race.netkeiba.com#{params[:target]}", class: 'btn btn-primary', :target=>["_blank"] %>
+  </div>
   <table class="table table-bordered table-hover table-striped">
     <thead>
       <tr>
@@ -76,5 +79,7 @@
       <% end %>
     </tbody>
   </table>
-  <%= link_to 'save', { action: :save_forecast }, method: :put, class: 'btn btn-primary', remote: true %>
+  <div>
+    <%= link_to 'save', { action: :save_forecast }, method: :put, class: 'btn btn-primary', remote: true %>
+  </div>
 </div>
