@@ -32,12 +32,12 @@ class HorseRaceController < ApplicationController
   end
 
   def get_forecast(target)
-    race_id = target.split("&")[1][-12..-1].to_i
-    @forecasts = Forecast.where(race_id: race_id)
+    # race_id = target.split("&")[1][-12..-1].to_i
+    # @forecasts = Forecast.where(race_id: race_id)
   end
 
   def save_forecast()
-    
+
   end
 
 end
