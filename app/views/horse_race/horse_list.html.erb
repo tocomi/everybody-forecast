@@ -1,6 +1,7 @@
 <div>
-  <div>
-    <%= link_to 'netkeiba', "http://race.netkeiba.com#{params[:target]}", class: 'btn btn-primary', :target=>["_blank"] %>
+  <div class="horse-list-header jumbotron">
+    <p class="header-race-number"><%= @race_detail[:race_number] %></p>
+    <%= link_to 'netkeiba', "http://race.netkeiba.com#{params[:target]}", class: 'btn btn-primary header-netkeiba-link', :target=>["_blank"] %>
   </div>
   <table class="table table-bordered table-hover table-striped">
     <thead>

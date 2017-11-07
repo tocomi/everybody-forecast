@@ -21,7 +21,7 @@ class HorseRaceController < ApplicationController
 
   def horse_list()
     adjusted_target = adjust_target(params[:target])
-    get_horse_list(adjusted_target)
+    get_race_info(adjusted_target)
     get_forecast(adjusted_target)
   end
 

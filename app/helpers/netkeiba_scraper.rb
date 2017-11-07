@@ -59,19 +59,31 @@ def get_race_number(url)
   return race_number
 end
 
-def get_horse_list(query)
-
+def get_race_info(query)
   # スクレイピング先のURL
   url = "http://race.netkeiba.com#{query}"
   doc = doc_parser(url)
 
+  # レース詳細の取得
+  @race_detail = get_race_detail(doc)
   # 出走馬データの取得
-  @horse_list = []
+  @horse_list = get_horse_detail(doc)
+end
+
+def get_race_detail(doc)
+  race_detail = {}
+  race_info = doc.css(".mainrace_data")
+  logger.debug(race_info)
+  race_detail[:race_number] = race_info.css(".racedata").css("dt").inner_text
+  return race_detail
+end
+
+def get_horse_detail(doc)
+  horse_list = []
   index = 0
   doc.css("#race_main").css(".shutuba_table").css("tr").each do |node|
     if index == 0 then # header
       header = {}
-      logger.debug 'header'
     else # content
       horse = {}
       horse[:gate_number] = node.css("td")[0].css("span").text
@@ -87,12 +99,11 @@ def get_horse_list(query)
       horse[:horse_handi] = age_handi_jockey_array[1]
       horse[:horse_jockey] = age_handi_jockey_array[2]
       # index:0 はヘッダーが入ってひとつずれるので-1している
-      @horse_list[index - 1] = horse
-      logger.debug "horse: #{horse}"
+      horse_list[index - 1] = horse
     end
     index = index + 1
   end
-  return @horse_list
+  return horse_list
 end
 
 def doc_parser(url)
