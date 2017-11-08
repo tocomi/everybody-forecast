@@ -12,6 +12,12 @@
   font-size: 40px !important;
 }
 
+.header-race-name {
+  margin-top: -20px;
+  margin-left: -30px;
+  font-size: 40px !important;
+}
+
 .header-netkeiba-link {
   float: right;
 }
@@ -20,11 +26,18 @@ table, td, th {
   -webkit-writing-mode: vertical-rl;
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
-  text-orientation: upright;
   vertical-align: middle !important;
 
-  .horse-number, .horse-age, .horse-handi {
+  .gate-number {
+    text-orientation: upright;
+  }
+
+  .text-upright {
     text-combine-upright: all;
+  }
+  
+  .horse-odds {
+    transform: scale(2, 1);
   }
 }
 

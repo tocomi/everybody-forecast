@@ -75,6 +75,7 @@ def get_race_detail(doc)
   race_info = doc.css(".mainrace_data")
   logger.debug(race_info)
   race_detail[:race_number] = race_info.css(".racedata").css("dt").inner_text
+  race_detail[:race_name] = race_info.css(".racedata").css("dd").css("h1").inner_text
   return race_detail
 end
 
@@ -98,6 +99,8 @@ def get_horse_detail(doc)
       horse[:horse_age] = horse_age
       horse[:horse_handi] = age_handi_jockey_array[1]
       horse[:horse_jockey] = age_handi_jockey_array[2]
+      odds_and_rank = node.css(".txt_c").inner_text
+      horse[:horse_odds] = get_odds(odds_and_rank)
       # index:0 はヘッダーが入ってひとつずれるので-1している
       horse_list[index - 1] = horse
     end
@@ -114,6 +117,11 @@ end
 
 def get_horse_age(age_and_color)
   return age_and_color.split("/")[0]
+end
+
+def get_odds(odds_and_rank)
+  /\(/ =~ odds_and_rank
+  return $`
 end
 
 def convert_sex_mark(sex)
