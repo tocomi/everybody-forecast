@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.header {
+  font-size: 12px;
+}
+
 .horse-table {
   font-size: 16px;
 }
@@ -35,7 +39,7 @@ table, td, th {
   .text-upright {
     text-combine-upright: all;
   }
-  
+
   .horse-odds {
     transform: scale(2, 1);
   }
