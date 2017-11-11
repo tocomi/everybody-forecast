@@ -8,6 +8,9 @@ gem 'coffee-rails', '4.2.1'
 gem 'jquery-rails', '4.1.1'
 gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.4.1'
+gem 'chef',         '12.10.24'
+gem 'knife-solo',   '0.6.0'
+gem 'berkshelf',    '6.3.1'
 
 group :development, :test do
   gem 'sqlite3', '1.3.11'
