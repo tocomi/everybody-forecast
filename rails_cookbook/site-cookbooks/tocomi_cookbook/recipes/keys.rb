@@ -3,7 +3,7 @@
 
 include_recipe "tocomi_cookbook::ops_user"
 
-directory "/hoem/ops/.ssh" do
+directory "/home/ops/.ssh" do
   action :create
   owner "ops"
   mode "0700"
