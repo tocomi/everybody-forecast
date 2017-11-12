@@ -36,7 +36,7 @@ set :default_env, {
 
 # setting unicorn
 set :unicorn_rack_env, "none"
-set :unicorn_config_path, 'config/unicon.rb'
+set :unicorn_config_path, 'config/unicorn.rb'
 
 # Default value for keep_releases is 5
 set :keep_releases, 5
