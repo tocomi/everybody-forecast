@@ -11,6 +11,7 @@ DEPENDENCIES
     git: git://github.com/fnichol/chef-rbenv.git
     revision: 5af1f6bdc93de9d02b3d6a9afb25ad9e499a23cb
     ref: v1.2.1
+  simple_iptables
   xml
 
 GRAPH
@@ -61,6 +62,7 @@ GRAPH
     yum-epel (>= 0.0.0)
   seven_zip (2.0.2)
     windows (>= 1.2.2)
+  simple_iptables (0.8.0)
   windows (3.3.0)
     ohai (>= 4.0.0)
   xml (3.1.2)
