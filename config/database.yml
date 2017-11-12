@@ -15,7 +15,7 @@ development:
 
 staging:
   <<: *default
-  database: db/staging.sqlite3
+  database: ../../shared/db/staging.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
