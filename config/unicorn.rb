@@ -4,7 +4,7 @@
 listen "127.0.0.1:3000"
 
 # setting pid file
-pid '/tmp/pids/unicorn.pid'
+pid '../tmp/pids/unicorn.pid'
 
 # setting worker
 worker_processes 2
