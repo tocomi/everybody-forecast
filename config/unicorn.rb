@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # setting port
-listen "127.0.0.1:3000"
+listen './tmp/socket/unicorn.sock'
 
 # setting pid file
 pid './tmp/pids/unicorn.pid'
