@@ -1,3 +1,7 @@
+upstream rails-unicorn {
+    server unix:/var/www/everybody-forecast/tmp/socket/unicorn.sock;
+}
+
 server {
   listen 80;
   server_name <%= node.tocomi_cookbook.server_name %>
