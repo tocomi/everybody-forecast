@@ -15,6 +15,7 @@
         <th class="header align-center">斤量</th>
         <th class="header align-center">騎手</th>
         <th class="header align-center">オッズ</th>
+        <th class="header align-center">人気</th>
         <th class="header align-center">予想</th>
       </tr>
     </thead>
@@ -64,6 +65,7 @@
           <td class="horse-table horse-handi text-upright"><%= "#{horse[:horse_handi]}" %></td>
           <td class="horse-table horse-jockey"><%= "#{horse[:horse_jockey]}" %></td>
           <td class="horse-table horse-odds text-upright"><%= "#{horse[:horse_odds]}" %></td>
+          <td class="horse-table horse-rank text-upright"><%= "#{horse[:horse_rank]}" %></td>
           <td class="horse-table forecast">
             <% @forecast_select  = { "-" => 0, "◎" => 5, "○" => 4, "▲" => 3, "△" => 2, "☆" => 1 } %>
             <% if !horse[:gate_number].empty? then %>
@@ -84,6 +86,6 @@
     </tbody>
   </table>
   <div>
-    <%= link_to 'save', { action: :save_forecast }, method: :put, class: 'btn btn-primary', remote: true %>
+    <%= link_to '予想を保存する(未実装)', { action: :save_forecast }, method: :put, class: 'btn btn-primary', remote: true %>
   </div>
 </div>
