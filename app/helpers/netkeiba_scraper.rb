@@ -100,7 +100,9 @@ def get_horse_detail(doc)
       horse[:horse_handi] = age_handi_jockey_array[1]
       horse[:horse_jockey] = age_handi_jockey_array[2]
       odds_and_rank = node.css(".txt_c").inner_text
-      horse[:horse_odds] = get_odds(odds_and_rank)
+      odds_rank_map = get_odds_rank_map(odds_and_rank)
+      horse[:horse_odds] = odds_rank_map[:odds]
+      horse[:horse_rank] = odds_rank_map[:rank]
       # index:0 はヘッダーが入ってひとつずれるので-1している
       horse_list[index - 1] = horse
     end
@@ -119,9 +121,14 @@ def get_horse_age(age_and_color)
   return age_and_color.split("/")[0]
 end
 
-def get_odds(odds_and_rank)
+def get_odds_rank_map(odds_and_rank)
+  odds_rank_map = {}
   /\(/ =~ odds_and_rank
-  return $`
+  odds_rank_map[:odds] = $`
+  rank_string = $'
+  /[0-9]*/ =~ rank_string
+  odds_rank_map[:rank] = $&
+  return odds_rank_map
 end
 
 def convert_sex_mark(sex)
