@@ -1,0 +1,13 @@
+source "https://api.berkshelf.com"
+
+cookbook 'git'
+cookbook 'build-essential'
+cookbook 'memcached'
+cookbook 'nodejs'
+cookbook 'database'
+cookbook 'xml'
+cookbook 'ruby_build'
+cookbook 'ruby_rbenv', :git => 'git://github.com/fnichol/chef-rbenv.git', :ref => 'v1.2.1'
+cookbook 'nginx'
+cookbook 'imagemagick'
+cookbook 'simple_iptables', git:"git://github.com/dcrosta/cookbook-simple-iptables.git"
