@@ -22,3 +22,9 @@
 
 # Ignore DS_Store
 .DS_Store
+
+# Ignore .vagrant
+.vagrant
+
+# Ignore .chef
+.chef
