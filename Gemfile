@@ -39,7 +39,8 @@ group :staging do
 end
 
 group :production do
-  gem 'sqlite3',    '1.3.11'
+  # gem 'sqlite3',    '1.3.11'
+  gem 'pg', '0.18.4' # for heroku
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
