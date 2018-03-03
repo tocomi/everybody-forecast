@@ -1,45 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  race_id: MyString
-  user_id: MyString
-  horse_01: 1
-  horse_02: 1
-  horse_03: 1
-  horse_04: 1
-  horse_05: 1
-  horse_06: 1
-  horse_07: 1
-  horse_08: 1
-  horse_09: 1
-  horse_10: 1
-  horse_11: 1
-  horse_12: 1
-  horse_13: 1
-  horse_14: 1
-  horse_15: 1
-  horse_16: 1
-  horse_17: 1
-  horse_18: 1
-
-two:
-  race_id: MyString
-  user_id: MyString
-  horse_01: 1
-  horse_02: 1
-  horse_03: 1
-  horse_04: 1
-  horse_05: 1
-  horse_06: 1
-  horse_07: 1
-  horse_08: 1
-  horse_09: 1
-  horse_10: 1
-  horse_11: 1
-  horse_12: 1
-  horse_13: 1
-  horse_14: 1
-  horse_15: 1
-  horse_16: 1
-  horse_17: 1
-  horse_18: 1
+  race_id: 201806020411
+  user_id: 1
+  horse_number: 8
+  forecast: 1

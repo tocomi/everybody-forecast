@@ -13,12 +13,12 @@
 ActiveRecord::Schema.define(version: 20171029103944) do
 
   create_table "forecasts", primary_key: ["race_id", "user_id"], force: :cascade do |t|
-    t.string   "race_id",      null: false
-    t.string   "user_id",      null: false
-    t.integer  "horse_number", null: false
-    t.integer  "forecast",     null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "race_id",      limit: 8, null: false
+    t.integer  "user_id",                null: false
+    t.integer  "horse_number",           null: false
+    t.integer  "forecast",               null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.index ["race_id", "user_id"], name: "sqlite_autoindex_forecasts_1", unique: true
   end
 
