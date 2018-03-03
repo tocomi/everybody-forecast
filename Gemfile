@@ -30,7 +30,7 @@ group :development do
 end
 
 group :staging do
-  gem 'sqlite3',    '1.3.11'
+  gem 'pg', '0.18.4'
   gem 'capistrano', '3.4.0'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
@@ -39,8 +39,7 @@ group :staging do
 end
 
 group :production do
-  # gem 'sqlite3',    '1.3.11'
-  gem 'pg', '0.18.4' # for heroku
+  gem 'pg', '0.18.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
