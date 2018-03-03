@@ -214,6 +214,7 @@ GEM
       plist (~> 3.1)
       systemu (~> 2.6.4)
       wmi-lite (~> 1.0)
+    pg (0.18.4)
     plist (3.3.0)
     proxifier (1.0.3)
     public_suffix (3.0.1)
@@ -377,6 +378,7 @@ DEPENDENCIES
   jquery-rails (= 4.1.1)
   knife-solo (= 0.6.0)
   listen (= 3.0.8)
+  pg (= 0.18.4)
   puma (= 3.4.0)
   rails (= 5.0.0.1)
   sass-rails (= 5.0.6)
@@ -389,5 +391,8 @@ DEPENDENCIES
   unicorn
   web-console (= 3.1.1)
 
+RUBY VERSION
+   ruby 2.5.0p0
+
 BUNDLED WITH
-   1.12.5
+   1.16.1
