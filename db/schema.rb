@@ -13,28 +13,12 @@
 ActiveRecord::Schema.define(version: 20171029103944) do
 
   create_table "forecasts", primary_key: ["race_id", "user_id"], force: :cascade do |t|
-    t.string   "race_id",                null: false
-    t.string   "user_id",                null: false
-    t.integer  "horse_01",   default: 0
-    t.integer  "horse_02",   default: 0
-    t.integer  "horse_03",   default: 0
-    t.integer  "horse_04",   default: 0
-    t.integer  "horse_05",   default: 0
-    t.integer  "horse_06",   default: 0
-    t.integer  "horse_07",   default: 0
-    t.integer  "horse_08",   default: 0
-    t.integer  "horse_09",   default: 0
-    t.integer  "horse_10",   default: 0
-    t.integer  "horse_11",   default: 0
-    t.integer  "horse_12",   default: 0
-    t.integer  "horse_13",   default: 0
-    t.integer  "horse_14",   default: 0
-    t.integer  "horse_15",   default: 0
-    t.integer  "horse_16",   default: 0
-    t.integer  "horse_17",   default: 0
-    t.integer  "horse_18",   default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "race_id",      null: false
+    t.string   "user_id",      null: false
+    t.integer  "horse_number", null: false
+    t.integer  "forecast",     null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.index ["race_id", "user_id"], name: "sqlite_autoindex_forecasts_1", unique: true
   end
 
