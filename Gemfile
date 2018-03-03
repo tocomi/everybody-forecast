@@ -29,15 +29,6 @@ group :development do
   gem 'spring-watcher-listen', '2.0.0'
 end
 
-group :staging do
-  gem 'pg', '0.18.4'
-  gem 'capistrano', '3.4.0'
-  gem 'capistrano-rails'
-  gem 'capistrano-bundler'
-  gem 'capistrano3-unicorn'
-  gem 'unicorn'
-end
-
 group :production do
   gem 'pg', '0.18.4'
 end
