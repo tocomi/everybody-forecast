@@ -67,12 +67,12 @@
           <td class="horse-table horse-odds text-upright"><%= "#{horse[:horse_odds]}" %></td>
           <td class="horse-table horse-rank text-upright"><%= "#{horse[:horse_rank]}" %></td>
           <td class="horse-table forecast">
-            <% @forecast_select  = { "-" => 0, "◎" => 5, "○" => 4, "▲" => 3, "△" => 2, "☆" => 1 } %>
+            <% @forecast_select  = { "-" => 0, "◎" => 1, "○" => 2, "▲" => 3, "△" => 4, "☆" => 5 } %>
             <% if !horse[:gate_number].empty? then %>
               <% @exists_forecast = false %>
               <% @forecasts.each do |forecast| %>
                 <% if forecast[:horse_number].to_i == horse[:horse_number].to_i then %>
-                  <%= select :forecast, :key, @forecast_select, :selected => forecast[:mark], class: 'select-mark' %>
+                  <%= select :forecast, :key, @forecast_select, :selected => forecast[:forecast], class: 'select-mark' %>
                   <% @exists_forecast = true %>
                 <% end %>
               <% end %>
