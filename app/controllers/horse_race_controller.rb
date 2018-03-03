@@ -20,9 +20,8 @@ class HorseRaceController < ApplicationController
   end
 
   def horse_list()
-    adjusted_target = adjust_target(params[:target])
-    get_race_info(adjusted_target)
-    get_forecast(adjusted_target)
+    get_race_info(adjust_target(params[:target]))
+    get_forecast
   end
 
   def adjust_target(target)
@@ -31,13 +30,17 @@ class HorseRaceController < ApplicationController
     return target
   end
 
-  def get_forecast(target)
-    race_id = target.split("&")[1][-12..-1].to_i
-    @forecasts = Forecast.where(race_id: race_id)
+  def get_forecast()
+    @forecasts = Forecast.where(race_id: get_race_id)
   end
 
   def save_forecast()
+    forecast = Forecast.new(user_id: 1, race_id: params[:race_id], horse_number: params[:horse_number], forecast: params[:forecast])
+    forecast.save 
+  end
 
+  def get_race_id
+    adjust_target(params[:target]).split("&")[1][-12..-1].to_i
   end
 
 end
