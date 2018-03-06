@@ -1,5 +1,5 @@
 upstream rails-unicorn {
-    server unix:/var/www/everybody-forecast/tmp/socket/unicorn.sock;
+    server unix:/var/www/tekkaba/tmp/socket/unicorn.sock;
 }
 
 server {
@@ -8,7 +8,7 @@ server {
 
   access_log /var/log/nginx/<%= node.tocomi_cookbook.server_name %>.access.log;
 
-  root /var/www/everybody-forecast/current/public;
+  root /var/www/tekkaba/current/public;
 
   error_page  404              /404.html;
   error_page  500 502 503 504  /500.html;
