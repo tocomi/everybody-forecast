@@ -12,6 +12,7 @@ gem 'jbuilder',     '2.7.0'
 gem 'chef',         '12.10.24'
 gem 'knife-solo',   '0.6.0'
 gem 'berkshelf',    '6.3.1'
+gem 'composite_primary_keys', '9.0.8'
 
 group :development, :test do
   gem 'sqlite3',    '1.3.11'
