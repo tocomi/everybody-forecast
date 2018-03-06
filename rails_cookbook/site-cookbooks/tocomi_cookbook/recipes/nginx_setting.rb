@@ -1,7 +1,7 @@
 # Cookbook Name:: tocomi_cookbook
 # Recipe:: nginx_setting
 
-directory '/var/www/everybody-forecast' do
+directory '/var/www/tekkaba' do
   owner 'ops'
   action :create
   recursive true
