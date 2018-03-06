@@ -25,4 +25,4 @@ test:
   database: db/test.sqlite3
 
 production:
-  url: url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
