@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029103944) do
+ActiveRecord::Schema.define(version: 20180306180350) do
 
   create_table "forecasts", primary_key: ["race_id", "user_id", "horse_number"], force: :cascade do |t|
     t.integer  "race_id",      limit: 8, null: false
@@ -20,6 +20,23 @@ ActiveRecord::Schema.define(version: 20171029103944) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["race_id", "user_id", "horse_number"], name: "sqlite_autoindex_forecasts_1", unique: true
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "user_name",              default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["user_name"], name: "index_users_on_user_name", unique: true
   end
 
 end
