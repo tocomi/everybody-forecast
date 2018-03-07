@@ -14,3 +14,17 @@
  *= require bootstrap.min
  *= require_tree .
  */
+
+.button-logout {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.button-login {
+  margin-top: 10px;
+}
+
+.input-form {
+  margin-top: 20px;
+}

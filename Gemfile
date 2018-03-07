@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby "2.5.0" # for heroku
-gem 'rails',        '5.0.1'
+gem 'rails',        '5.0.2'
 gem 'puma',         '3.4.0'
 gem 'sass-rails',   '5.0.7'
 gem 'uglifier',     '3.0.0'
@@ -12,7 +12,7 @@ gem 'jbuilder',     '2.7.0'
 gem 'chef',         '12.10.24'
 gem 'knife-solo',   '0.6.0'
 gem 'berkshelf',    '6.3.1'
-gem 'composite_primary_keys', '9.0.8'
+gem 'composite_primary_keys', '9.0.9'
 gem 'devise',       '4.4.1'
 
 group :development, :test do
