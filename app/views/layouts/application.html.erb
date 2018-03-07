@@ -15,8 +15,12 @@
         <div class="navbar-header">
           <%= link_to 'tekkaba', root_path, class: 'navbar-brand' %>
         </div>
+        <% if user_signed_in? %>
+          <%= link_to 'Logout', sign_out_path, class: 'btn btn-primary button-logout' %>
+        <% end %>
       </div>
     </header>
+
     <div class="container">
       <%= yield %>
     </div>

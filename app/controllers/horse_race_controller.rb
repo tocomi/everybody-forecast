@@ -30,16 +30,16 @@ class HorseRaceController < ApplicationController
   end
 
   def get_forecast()
-    @forecasts = Forecast.where("race_id = ?", get_race_id)
+    @forecasts = Forecast.where("race_id = ? AND user_id = ?", get_race_id, get_user_id)
   end
 
   def save_forecast()
     race_id = params[:race_id].to_i
+    user_id = get_user_id
     horse_number = params[:horse_number].to_i
     forecast = params[:forecast].to_i
 
-    current_forecast = find_forecast(race_id, get_user_id, horse_number)
-    # logger.debug("[%s] current_forecast: %s" % [DateTime.now.strftime("%Y/%m/%d %H:%M:%S"), current_forecast.to_s])
+    current_forecast = find_forecast(race_id, user_id, horse_number)
 
     if current_forecast then
       if delete?(forecast) then
@@ -47,7 +47,7 @@ class HorseRaceController < ApplicationController
       end
       return update_forecast(current_forecast, forecast)
     end
-    return create_forecast(race_id, get_user_id, horse_number, forecast)
+    return create_forecast(race_id, user_id, horse_number, forecast)
   end
 
   def get_race_id
@@ -55,7 +55,7 @@ class HorseRaceController < ApplicationController
   end
 
   def get_user_id
-    1
+    current_user.id
   end
 
   def find_forecast(race_id, user_id, horse_number)
