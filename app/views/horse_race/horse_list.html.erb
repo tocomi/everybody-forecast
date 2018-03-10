@@ -16,7 +16,9 @@
         <th class="header align-center">騎手</th>
         <th class="header align-center">オッズ</th>
         <th class="header align-center">人気</th>
-        <th class="header align-center">予想</th>
+        <% if user_signed_in? %>
+          <th class="header align-center">予想</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -66,21 +68,23 @@
           <td class="horse-table horse-jockey"><%= "#{horse[:horse_jockey]}" %></td>
           <td class="horse-table horse-odds text-upright"><%= "#{horse[:horse_odds]}" %></td>
           <td class="horse-table horse-rank text-upright"><%= "#{horse[:horse_rank]}" %></td>
-          <td class="horse-table forecast">
-            <% @forecast_select  = { "-" => 0, "◎" => 1, "○" => 2, "▲" => 3, "△" => 4, "☆" => 5 } %>
-            <% if !horse[:gate_number].empty? then %>
-              <% @exists_forecast = false %>
-              <% @forecasts.each do |forecast| %>
-                <% if forecast[:horse_number].to_i == horse[:horse_number].to_i then %>
-                  <%= select :forecast, :key, @forecast_select, :selected => forecast[:forecast], class: 'select-mark' %>
-                  <% @exists_forecast = true %>
+          <% if user_signed_in? %>
+            <td class="horse-table forecast">
+              <% @forecast_select  = { "-" => 0, "◎" => 1, "○" => 2, "▲" => 3, "△" => 4, "☆" => 5 } %>
+              <% if !horse[:gate_number].empty? then %>
+                <% @exists_forecast = false %>
+                <% @forecasts.each do |forecast| %>
+                  <% if forecast[:horse_number].to_i == horse[:horse_number].to_i then %>
+                    <%= select :forecast, :key, @forecast_select, :selected => forecast[:forecast], class: 'select-mark' %>
+                    <% @exists_forecast = true %>
+                  <% end %>
+                <% end %>
+                <% if @exists_forecast == false %>
+                  <%= select :forecast, :key, @forecast_select, class: 'select-mark' %>
                 <% end %>
               <% end %>
-              <% if @exists_forecast == false %>
-                <%= select :forecast, :key, @forecast_select, class: 'select-mark' %>
-              <% end %>
-            <% end %>
-          </td>
+            </td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

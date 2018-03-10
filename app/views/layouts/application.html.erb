@@ -17,6 +17,10 @@
         </div>
         <% if user_signed_in? %>
           <%= link_to 'Logout', sign_out_path, class: 'btn btn-primary button-logout' %>
+        <% else %>
+          <% if !request.url.match(/sign_in/) %>
+            <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary button-logout' %>
+          <% end %>
         <% end %>
       </div>
     </header>
