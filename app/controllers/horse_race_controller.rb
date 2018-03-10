@@ -5,12 +5,13 @@ class HorseRaceController < ApplicationController
 
   # flag for display combobox
   @exists_forecast
-  @forecast_select
 
+  # root page #
   def index
     get_race_header()
   end
 
+  # rase list page #
   def race_list()
     target = params[:target]
     @date = params[:date]
@@ -18,6 +19,7 @@ class HorseRaceController < ApplicationController
     get_race_list(target)
   end
 
+  # horse list page #
   def horse_list()
     get_race_info(adjust_target(params[:target]))
     get_forecast
@@ -30,8 +32,14 @@ class HorseRaceController < ApplicationController
   end
 
   def get_forecast()
-    return unless current_user
-    @forecasts = Forecast.where("race_id = ? AND user_id = ?", get_race_id, get_user_id)
+    if current_user
+      @my_forecasts = Forecast.where("race_id = ? AND user_id = ?", get_race_id, get_user_id)
+      @other_users = Forecast.joins("INNER JOIN users ON forecasts.user_id = users.id").select("forecasts.user_id, users.display_name").where("user_id != ?", get_user_id).distinct
+      @other_forecasts = Forecast.where("race_id = ? AND user_id != ?", get_race_id, get_user_id)
+    else
+      @other_users = Forecast.joins("INNER JOIN users ON forecasts.user_id = users.id").select("forecasts.user_id, users.display_name").distinct
+      @other_forecasts = Forecast.where("race_id = ?", get_race_id)
+    end
   end
 
   def save_forecast()
