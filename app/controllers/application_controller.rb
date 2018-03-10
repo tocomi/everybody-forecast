@@ -1,6 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :store_user_location!, if: :storable_location?
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+  # add column to devise user model
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:display_name])
+  end
 
   private
   ### from https://github.com/plataformatec/devise/wiki/How-To:-Redirect-back-to-current-page-after-sign-in,-sign-out,-sign-up,-update
