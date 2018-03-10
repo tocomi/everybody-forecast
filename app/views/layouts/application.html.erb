@@ -16,10 +16,11 @@
           <%= link_to 'tekkaba', root_path, class: 'navbar-brand' %>
         </div>
         <% if user_signed_in? %>
-          <%= link_to 'Logout', sign_out_path, class: 'btn btn-primary button-logout' %>
+          <%= link_to 'Logout', sign_out_path, class: 'btn btn-primary button-session' %>
+          <p class="user-header">Current User: <%= current_user.user_name %></p>
         <% else %>
           <% if !request.url.match(/sign_in/) %>
-            <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary button-logout' %>
+            <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary button-session' %>
           <% end %>
         <% end %>
       </div>
