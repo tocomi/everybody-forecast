@@ -30,6 +30,7 @@ class HorseRaceController < ApplicationController
   end
 
   def get_forecast()
+    return unless current_user
     @forecasts = Forecast.where("race_id = ? AND user_id = ?", get_race_id, get_user_id)
   end
 
