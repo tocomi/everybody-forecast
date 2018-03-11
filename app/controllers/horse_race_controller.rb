@@ -34,10 +34,14 @@ class HorseRaceController < ApplicationController
   def get_forecast()
     if current_user
       @my_forecasts = Forecast.where("race_id = ? AND user_id = ?", get_race_id, get_user_id)
-      @other_users = Forecast.joins("INNER JOIN users ON forecasts.user_id = users.id").select("forecasts.user_id, users.display_name").where("user_id != ?", get_user_id).distinct
+      @other_users = Forecast.where("race_id = ? AND user_id != ?", get_race_id, get_user_id)
+                             .joins("INNER JOIN users ON forecasts.user_id = users.id")
+                             .select("forecasts.user_id, users.display_name").distinct
       @other_forecasts = Forecast.where("race_id = ? AND user_id != ?", get_race_id, get_user_id)
     else
-      @other_users = Forecast.joins("INNER JOIN users ON forecasts.user_id = users.id").select("forecasts.user_id, users.display_name").distinct
+      @other_users = Forecast.where("race_id = ?", get_race_id)
+                             .joins("INNER JOIN users ON forecasts.user_id = users.id")
+                             .select("forecasts.user_id, users.display_name").distinct
       @other_forecasts = Forecast.where("race_id = ?", get_race_id)
     end
   end
