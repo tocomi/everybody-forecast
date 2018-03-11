@@ -1,11 +1,15 @@
 
-.title {
-  position: absolute;
-  top: 360px;
-  left: 170px;
-  font-size: 70px;
-  color: white;
-  -webkit-text-stroke:.9px gray;
+.title-panel {
+  position: relative;
+
+  .title {
+    position: absolute;
+    top: 270px;
+    left: 50px;
+    font-size: 70px;
+    color: white;
+    -webkit-text-stroke:.9px gray;
+  }
 }
 
 .race-date-div {
