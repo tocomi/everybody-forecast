@@ -22,6 +22,8 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano3-unicorn'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :development do
