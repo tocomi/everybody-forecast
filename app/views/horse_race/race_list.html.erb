@@ -24,8 +24,14 @@
         <div class="race-number-div bg-primary">
           <p class="race-number align-center"><%= "#{race[:number]}R" %></p>
         </div>
-        <%= link_to horse_race_horse_list_path(target: race[:url]), class: 'btn btn-primary race-detail' do %>
-          <%= race[:title] %><br><%= race[:detail] %>
+        <% if is_registered_forecast(race[:race_id]) %>
+          <%= link_to horse_race_horse_list_path(target: race[:url]), class: 'btn btn-success race-detail' do %>
+            <%= race[:title] %><br><%= race[:detail] %>
+          <% end %>
+        <% else %>
+          <%= link_to horse_race_horse_list_path(target: race[:url]), class: 'btn btn-primary race-detail' do %>
+            <%= race[:title] %><br><%= race[:detail] %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
