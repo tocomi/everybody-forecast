@@ -22,16 +22,10 @@
       </div>
       <% race_per_place[:race_list].each do |race| %>
         <div class="race-number-div bg-primary">
-          <p class="race-number align-center"><%= "#{race[:number]}R" %></p>
+          <p class="race-number align-center"><%= "#{race.get_race_number}R" %></p>
         </div>
-        <% if is_registered_forecast(race[:race_id]) %>
-          <%= link_to horse_race_horse_list_path(target: race[:url]), class: 'btn btn-success race-detail' do %>
-            <%= race[:title] %><br><%= race[:detail] %>
-          <% end %>
-        <% else %>
-          <%= link_to horse_race_horse_list_path(target: race[:url]), class: 'btn btn-primary race-detail' do %>
-            <%= race[:title] %><br><%= race[:detail] %>
-          <% end %>
+        <%= link_to horse_race_horse_list_path(target: race.url), class: race.get_race_button_class do %>
+          <%= race.title %><br><%= race.detail %>
         <% end %>
       <% end %>
     </div>
