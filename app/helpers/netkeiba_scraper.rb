@@ -34,12 +34,12 @@ def get_race_list(query)
     race_place_info[:date] = day_node.css(".race_top_hold_data").css(".kaisaidata").inner_text
     race_place_info[:condition] = day_node.css(".race_top_hold_data").css(".jyodata").inner_text
     day_node.css("li").each do |node|
-      race = {}
-      race[:title] = node.css(".racename").css("a").attribute("title").value
-      race[:detail] = node.css(".racedata").inner_text
-      race[:url] = node.css("dt").css("a").attribute("href").value
-      race[:race_id] = get_race_id_from_url(race[:url])
-      race[:number] = get_race_number(race[:url])
+      title = node.css(".racename").css("a").attribute("title").value
+      detail = node.css(".racedata").inner_text
+      url = node.css("dt").css("a").attribute("href").value
+      race = Race.new(title, detail, url)
+      logger.debug(race.inspect)
+
       race_list[index] = race
       index = index + 1
     end
@@ -142,5 +142,5 @@ def convert_sex_mark(sex)
 end
 
 def get_race_id_from_url(url)
-  adjust_target(url).split("&")[1][-12..-1].to_i
+  url.split("&")[1][-12..-1].to_i
 end

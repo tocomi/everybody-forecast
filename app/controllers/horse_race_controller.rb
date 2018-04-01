@@ -19,10 +19,6 @@ class HorseRaceController < ApplicationController
     get_race_list(target)
   end
 
-  def is_registered_forecast(race_id)
-    Forecast.exists?(race_id: race_id)
-  end
-
   helper_method :is_registered_forecast
 
   # horse list page #
