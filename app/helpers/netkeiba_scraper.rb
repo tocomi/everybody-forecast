@@ -34,12 +34,12 @@ def get_race_list(query)
     race_place_info[:date] = day_node.css(".race_top_hold_data").css(".kaisaidata").inner_text
     race_place_info[:condition] = day_node.css(".race_top_hold_data").css(".jyodata").inner_text
     day_node.css("li").each do |node|
-      race = {}
-      race[:title] = node.css(".racename").css("a").attribute("title").value
-      race[:detail] = node.css(".racedata").inner_text
-      race[:url] = node.css("dt").css("a").attribute("href").value
-      race[:race_id] = get_race_id_from_url(race[:url])
-      race[:number] = get_race_number(race[:url])
+      title = node.css(".racename").css("a").attribute("title").value
+      detail = node.css(".racedata").inner_text
+      url = node.css("dt").css("a").attribute("href").value
+      race = Race.new(title, detail, url)
+      logger.debug(race.inspect)
+
       race_list[index] = race
       index = index + 1
     end
@@ -87,23 +87,13 @@ def get_horse_detail(doc)
     if index == 0 then # header
       header = {}
     else # content
-      horse = {}
-      horse[:gate_number] = node.css("td")[0].css("span").text
-      horse[:horse_number] = node.css(".umaban").text
-      horse[:horse_name] = node.css(".h_name").css("a").inner_text
+      gate_number = node.css("td")[0].css("span").text
+      horse_number = node.css(".umaban").text
+      name = node.css(".h_name").css("a").inner_text
       age_handi_jockey = node.css(".txt_l")[1].inner_text
-      age_handi_jockey_array = age_handi_jockey.split(" ")
-      horse_sex_age = get_horse_age(age_handi_jockey_array[0])
-      horse_sex = convert_sex_mark(horse_sex_age.slice(0))
-      horse_age = horse_sex_age.slice(1)
-      horse[:horse_sex] = horse_sex
-      horse[:horse_age] = horse_age
-      horse[:horse_handi] = age_handi_jockey_array[1]
-      horse[:horse_jockey] = age_handi_jockey_array[2]
       odds_and_rank = node.css(".txt_c").inner_text
-      odds_rank_map = get_odds_rank_map(odds_and_rank)
-      horse[:horse_odds] = odds_rank_map[:odds]
-      horse[:horse_rank] = odds_rank_map[:rank]
+      horse = Horse.new(gate_number, horse_number, name, age_handi_jockey, odds_and_rank)
+
       # index:0 はヘッダーが入ってひとつずれるので-1している
       horse_list[index - 1] = horse
     end
@@ -116,31 +106,4 @@ def doc_parser(url)
   html = open(url).read
   # htmlをパース(解析)してオブジェクトを作成
   return Nokogiri::HTML.parse(html.toutf8, nil, 'utf-8')
-end
-
-def get_horse_age(age_and_color)
-  return age_and_color.split("/")[0]
-end
-
-def get_odds_rank_map(odds_and_rank)
-  odds_rank_map = {}
-  /\(/ =~ odds_and_rank
-  odds_rank_map[:odds] = $`
-  rank_string = $'
-  /[0-9]*/ =~ rank_string
-  odds_rank_map[:rank] = $&
-  return odds_rank_map
-end
-
-def convert_sex_mark(sex)
-  if sex == '牡'
-    return '♂'
-  elsif sex == '牝'
-    return '♀'
-  end
-  return sex
-end
-
-def get_race_id_from_url(url)
-  adjust_target(url).split("&")[1][-12..-1].to_i
 end

@@ -7,15 +7,15 @@
   <table class="table table-bordered table-hover table-striped">
     <thead>
       <tr>
-        <th class="header align-center">枠番</th>
-        <th class="header align-center">馬番</th>
+        <th class="header align-center">枠</th>
+        <th class="header align-center">番</th>
         <th class="header align-center">馬名</th>
-        <th class="header align-center">性別</th>
-        <th class="header align-center">馬齢</th>
-        <th class="header align-center">斤量</th>
+        <th class="header align-center">性</th>
+        <th class="header align-center">齢</th>
+        <th class="header align-center">斤</th>
         <th class="header align-center">騎手</th>
-        <th class="header align-center">オッズ</th>
-        <th class="header align-center">人気</th>
+        <th class="header align-center">率</th>
+        <th class="header align-center">人</th>
         <% if user_signed_in? %>
           <th class="header align-center">予想</th>
         <% end %>
@@ -29,58 +29,24 @@
       <% forecast_mark = { 1 => "◎", 2 => "○", 3 => "▲", 4 => "△", 5 => "☆" } %>
       <% @horse_list.each do |horse| %>
         <tr>
-          <% if horse[:gate_number] == '1' %>
-            <td class="horse-table gate-number background-white"><%= "#{horse[:gate_number]}" %></td>
-            <td class="horse-table horse-number text-upright background-white"><%= "#{horse[:horse_number]}" %></td>
-          <% elsif horse[:gate_number] == '2' %>
-            <td class="horse-table gate-number background-black"><%= "#{horse[:gate_number]}" %></td>
-            <td class="horse-table horse-number text-upright background-black"><%= "#{horse[:horse_number]}" %></td>
-          <% elsif horse[:gate_number] == '3' %>
-            <td class="horse-table gate-number background-red"><%= "#{horse[:gate_number]}" %></td>
-            <td class="horse-table horse-number text-upright background-red"><%= "#{horse[:horse_number]}" %></td>
-          <% elsif horse[:gate_number] == '4' %>
-            <td class="horse-table gate-number background-blue"><%= "#{horse[:gate_number]}" %></td>
-            <td class="horse-table horse-number text-upright background-blue"><%= "#{horse[:horse_number]}" %></td>
-          <% elsif horse[:gate_number] == '5' %>
-            <td class="horse-table gate-number background-yellow"><%= "#{horse[:gate_number]}" %></td>
-            <td class="horse-table horse-number text-upright background-yellow"><%= "#{horse[:horse_number]}" %></td>
-          <% elsif horse[:gate_number] == '6' %>
-            <td class="horse-table gate-number background-green"><%= "#{horse[:gate_number]}" %></td>
-            <td class="horse-table horse-number text-upright background-green"><%= "#{horse[:horse_number]}" %></td>
-          <% elsif horse[:gate_number] == '7' %>
-            <td class="horse-table gate-number background-orange"><%= "#{horse[:gate_number]}" %></td>
-            <td class="horse-table horse-number text-upright background-orange"><%= "#{horse[:horse_number]}" %></td>
-          <% elsif horse[:gate_number] == '8' %>
-            <td class="horse-table gate-number background-pink"><%= "#{horse[:gate_number]}" %></td>
-            <td class="horse-table horse-number text-upright background-pink"><%= "#{horse[:horse_number]}" %></td>
-          <% else %>
-            <td class="horse-table gate-number"><%= "#{horse[:gate_number]}" %></td>
-            <td class="horse-table horse-number text-upright"><%= "#{horse[:horse_number]}" %></td>
-          <% end %>
+          <td class="<%= horse.get_gate_class %>"><%= "#{horse.gate_number}" %></td>
+          <td class="horse-table horse-number text-upright background-white"><%= "#{horse.horse_number}" %></td>
+          <td class="horse-table horse-name"><%= "#{horse.name}" %></td>
+          <td class="<%= horse.get_sex_class %>"><%= "#{horse.sex}" %></td>
+          <td class="horse-table horse-age text-upright"><%= "#{horse.age}" %></td>
+          <td class="horse-table horse-handi text-upright"><%= "#{horse.handi}" %></td>
+          <td class="horse-table horse-jockey"><%= "#{horse.jockey}" %></td>
+          <td class="horse-table horse-odds text-upright"><%= "#{horse.odds}" %></td>
+          <td class="horse-table horse-rank text-upright"><%= "#{horse.rank}" %></td>
 
-          <td class="horse-table horse-name"><%= "#{horse[:horse_name]}" %></td>
-
-          <% if horse[:horse_sex] == '♂' %>
-            <td class="horse-table horse-sex background-blue"><%= "#{horse[:horse_sex]}" %></td>
-          <% elsif horse[:horse_sex] == '♀' %>
-            <td class="horse-table horse-sex background-red"><%= "#{horse[:horse_sex]}" %></td>
-          <% else %>
-            <td class="horse-table horse-sex"><%= "#{horse[:horse_sex]}" %></td>
-          <% end %>
-
-          <td class="horse-table horse-age text-upright"><%= "#{horse[:horse_age]}" %></td>
-          <td class="horse-table horse-handi text-upright"><%= "#{horse[:horse_handi]}" %></td>
-          <td class="horse-table horse-jockey"><%= "#{horse[:horse_jockey]}" %></td>
-          <td class="horse-table horse-odds text-upright"><%= "#{horse[:horse_odds]}" %></td>
-          <td class="horse-table horse-rank text-upright"><%= "#{horse[:horse_rank]}" %></td>
           <% if user_signed_in? %>
             <td class="horse-table forecast">
-              <% if horse[:gate_number].empty? then %>
+              <% if horse.gate_number.empty? then %>
                 <% return %>
               <% end %>
               <% @exists_forecast = false %>
               <% @my_forecasts.each do |forecast| %>
-                <% if forecast[:horse_number].to_i == horse[:horse_number].to_i then %>
+                <% if forecast[:horse_number].to_i == horse.horse_number.to_i then %>
                   <%= select :forecast, :key, forecast_select, :selected => forecast[:forecast], class: 'select-mark' %>
                   <% @exists_forecast = true %>
                 <% end %>
@@ -90,16 +56,18 @@
               <% end %>
             </td>
           <% end %>
+
           <% @other_users.each do |other_user| %>
             <% other_forecasts = @other_forecasts.where("user_id = ?", other_user.user_id) %>
             <td class="horse-table forecast">
               <% other_forecasts.each do |other_forecast| %>
-                <% if other_forecast[:horse_number].to_i == horse[:horse_number].to_i then %>
+                <% if other_forecast[:horse_number].to_i == horse.horse_number.to_i then %>
                   <%= forecast_mark[other_forecast[:forecast]] %>
                 <% end %>
               <% end %>
             </td>
           <% end %>
+          
         </tr>
       <% end %>
     </tbody>
