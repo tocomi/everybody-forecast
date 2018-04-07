@@ -13,6 +13,7 @@ gem 'knife-solo',   '0.6.0'
 gem 'berkshelf',    '6.3.1'
 gem 'composite_primary_keys', '10.0.3'
 gem 'devise',       '4.4.1'
+gem 'webpacker',    github: 'rails/webpacker'
 
 group :development, :test do
   gem 'sqlite3',    '1.3.11'
