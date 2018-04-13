@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby "2.5.0" # for heroku
-gem 'rails',        '5.1.6'
+gem 'rails',        '5.1.5'
 gem 'puma',         '3.4.0'
 gem 'sass-rails',   '5.0.7'
 gem 'uglifier',     '3.0.0'
