@@ -4,7 +4,7 @@ $(document).on 'change', '#forecast_key', ->
     url: 'horse_list'
     data: {
       race_id: Number(location.search.match('[0-9]{12}')),
-      horse_number: Number($(this).parent().prevAll('.horse-number').text()),
+      horse_number: Number($(this).parent().nextAll('.horse-number').text()),
       forecast: $(this).val()
     }
   )
