@@ -56,7 +56,16 @@ export default {
         return
       }
       this.posts.unshift({ display_name: this.current_user.display_name, comment: this.comment, created_at: Date.now() })
-      this.comment = ''
+      axios.post('../api/posts', {
+        race_id: location.search.match('[0-9]{12}')[0],
+        user_id: this.current_user.id,
+        comment: this.comment
+      }).then(
+        res => {
+          this.comment = ''
+          this.get_comments(location.search.match('[0-9]{12}')[0])
+        }
+      )
     }
   }
 }
