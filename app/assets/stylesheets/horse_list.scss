@@ -26,7 +26,7 @@
   float: right;
 }
 
-table, td, th {
+.table-bordered, .horse-table {
   -webkit-writing-mode: vertical-rl;
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
@@ -83,4 +83,63 @@ table, td, th {
 .background-pink {
   background-color: #dc6179;
   color: white;
+}
+
+// posts
+.post-table-div {
+  float: left;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.post-table {
+  word-break: break-all;
+
+  .post-header {
+    text-align: center;
+    background-color: #394c82;
+    color: #ffffff;
+  }
+
+  .name {
+    text-align: center;
+    width: 50px;
+  }
+
+  .comment {
+    width: 400px;
+  }
+
+  .time {
+    text-align: center;
+    width: 190px;
+  }
+}
+
+.comment-area {
+  background-color: #eeeeee;
+  float: left;
+  height: 200px;
+  width: 320px;
+  margin-left: 10px;
+
+  .comment-title {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .text-comment {
+    float: none;
+    height: 100px;
+    width: 300px;
+    margin-top: 10px;
+    margin-left: 10px;
+    resize: none;
+  }
+
+  .comment-button {
+    margin-left: 250px;
+  }
 }

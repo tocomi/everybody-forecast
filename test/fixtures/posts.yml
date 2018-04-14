@@ -1,0 +1,15 @@
+---
+001:
+  race_id: 201806030811
+  user_id: 1
+  comment: 'hoge'
+
+002:
+  race_id: 201806030811
+  user_id: 1
+  comment: 'fuga'
+
+003:
+  race_id: 201806030811
+  user_id: 1
+  comment: 'piyo'
