@@ -26,24 +26,24 @@
   float: right;
 }
 
-table, td, th {
-  -webkit-writing-mode: vertical-rl;
-  -ms-writing-mode: tb-rl;
-  writing-mode: vertical-rl;
-  vertical-align: middle !important;
-
-  .gate-number {
-    text-orientation: upright;
-  }
-
-  .text-upright {
-    text-combine-upright: all;
-  }
-
-  .horse-odds {
-    transform: scale(2, 1);
-  }
-}
+// table, td, th {
+//   -webkit-writing-mode: vertical-rl;
+//   -ms-writing-mode: tb-rl;
+//   writing-mode: vertical-rl;
+//   vertical-align: middle !important;
+//
+//   .gate-number {
+//     text-orientation: upright;
+//   }
+//
+//   .text-upright {
+//     text-combine-upright: all;
+//   }
+//
+//   .horse-odds {
+//     transform: scale(2, 1);
+//   }
+// }
 
 .background-white {
   background-color: #ffffff;

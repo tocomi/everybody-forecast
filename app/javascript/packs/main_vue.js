@@ -6,13 +6,22 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import Vue from 'vue'
-import App from '../app.vue'
+import Posts from '../posts.vue'
 
-const app = new Vue({
-  el: '#app',
-  components: { App },
-  template: '<app></app>'
+const posts = new Vue({
+  el: '#posts',
+  components: { Posts },
+  template: '<posts></posts>'
 })
+
+function init() {
+  // load post about race
+  posts.$children[0].get_comments(location.search.match('[0-9]{12}'))
+  // change visible depends on login
+  posts.$children[0].check_login()
+}
+
+init();
 
 // The above code uses Vue without the compiler, which means you cannot
 // use Vue to target elements in your existing html templates. You would

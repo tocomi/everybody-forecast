@@ -7,6 +7,12 @@
   <table class="table table-bordered table-hover table-striped">
     <thead>
       <tr>
+        <% @other_users.each do |user| %>
+          <th class="header align-center"><%= truncate(user[:display_name], :length => 3, :omission => '') %></th>
+        <% end %>
+        <% if user_signed_in? %>
+          <th class="header align-center">予想</th>
+        <% end %>
         <th class="header align-center">枠</th>
         <th class="header align-center">番</th>
         <th class="header align-center">馬名</th>
@@ -16,12 +22,6 @@
         <th class="header align-center">騎手</th>
         <th class="header align-center">率</th>
         <th class="header align-center">人</th>
-        <% if user_signed_in? %>
-          <th class="header align-center">予想</th>
-        <% end %>
-        <% @other_users.each do |user| %>
-          <th class="header align-center"><%= truncate(user[:display_name], :length => 3, :omission => '') %></th>
-        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -29,16 +29,6 @@
       <% forecast_mark = { 1 => "◎", 2 => "○", 3 => "▲", 4 => "△", 5 => "☆" } %>
       <% @horse_list.each do |horse| %>
         <tr>
-          <td class="<%= horse.get_gate_class %>"><%= "#{horse.gate_number}" %></td>
-          <td class="horse-table horse-number text-upright background-white"><%= "#{horse.horse_number}" %></td>
-          <td class="horse-table horse-name"><%= "#{horse.name}" %></td>
-          <td class="<%= horse.get_sex_class %>"><%= "#{horse.sex}" %></td>
-          <td class="horse-table horse-age text-upright"><%= "#{horse.age}" %></td>
-          <td class="horse-table horse-handi text-upright"><%= "#{horse.handi}" %></td>
-          <td class="horse-table horse-jockey"><%= "#{horse.jockey}" %></td>
-          <td class="horse-table horse-odds text-upright"><%= "#{horse.odds}" %></td>
-          <td class="horse-table horse-rank text-upright"><%= "#{horse.rank}" %></td>
-
           <% if user_signed_in? %>
             <td class="horse-table forecast">
               <% if horse.gate_number.empty? then %>
@@ -67,9 +57,22 @@
               <% end %>
             </td>
           <% end %>
-          
+
+          <td class="<%= horse.get_gate_class %>"><%= "#{horse.gate_number}" %></td>
+          <td class="horse-table horse-number text-upright background-white"><%= "#{horse.horse_number}" %></td>
+          <td class="horse-table horse-name"><%= "#{horse.name}" %></td>
+          <td class="<%= horse.get_sex_class %>"><%= "#{horse.sex}" %></td>
+          <td class="horse-table horse-age text-upright"><%= "#{horse.age}" %></td>
+          <td class="horse-table horse-handi text-upright"><%= "#{horse.handi}" %></td>
+          <td class="horse-table horse-jockey"><%= "#{horse.jockey}" %></td>
+          <td class="horse-table horse-odds text-upright"><%= "#{horse.odds}" %></td>
+          <td class="horse-table horse-rank text-upright"><%= "#{horse.rank}" %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
+<div id="posts">
+  <posts></posts>
+</div>
+<%= javascript_pack_tag 'main_vue' %>
