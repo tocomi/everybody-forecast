@@ -29,6 +29,16 @@
       <% forecast_mark = { 1 => "◎", 2 => "○", 3 => "▲", 4 => "△", 5 => "☆" } %>
       <% @horse_list.each do |horse| %>
         <tr>
+          <td class="<%= horse.get_gate_class %>"><%= "#{horse.gate_number}" %></td>
+          <td class="horse-table horse-number text-upright background-white"><%= "#{horse.horse_number}" %></td>
+          <td class="horse-table horse-name"><%= "#{horse.name}" %></td>
+          <td class="<%= horse.get_sex_class %>"><%= "#{horse.sex}" %></td>
+          <td class="horse-table horse-age text-upright"><%= "#{horse.age}" %></td>
+          <td class="horse-table horse-handi text-upright"><%= "#{horse.handi}" %></td>
+          <td class="horse-table horse-jockey"><%= "#{horse.jockey}" %></td>
+          <td class="horse-table horse-odds text-upright"><%= "#{horse.odds}" %></td>
+          <td class="horse-table horse-rank text-upright"><%= "#{horse.rank}" %></td>
+
           <% if user_signed_in? %>
             <td class="horse-table forecast">
               <% if horse.gate_number.empty? then %>
@@ -57,16 +67,7 @@
               <% end %>
             </td>
           <% end %>
-
-          <td class="<%= horse.get_gate_class %>"><%= "#{horse.gate_number}" %></td>
-          <td class="horse-table horse-number text-upright background-white"><%= "#{horse.horse_number}" %></td>
-          <td class="horse-table horse-name"><%= "#{horse.name}" %></td>
-          <td class="<%= horse.get_sex_class %>"><%= "#{horse.sex}" %></td>
-          <td class="horse-table horse-age text-upright"><%= "#{horse.age}" %></td>
-          <td class="horse-table horse-handi text-upright"><%= "#{horse.handi}" %></td>
-          <td class="horse-table horse-jockey"><%= "#{horse.jockey}" %></td>
-          <td class="horse-table horse-odds text-upright"><%= "#{horse.odds}" %></td>
-          <td class="horse-table horse-rank text-upright"><%= "#{horse.rank}" %></td>
+          
         </tr>
       <% end %>
     </tbody>
