@@ -1,20 +1,23 @@
 <template>
   <div>
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Comment</th>
-        <th>Time</th>
-      </tr>
-      <tr v-for="post in posts">
-        <td>{{ post.display_name }}</td>
-        <td>{{ post.comment }}</td>
-        <td>{{ post.created_at }}</td>
-      </tr>
-    </table>
-    <div class="comment_area" v-if="login">
-      <textarea class="text_comment" v-model="comment"></textarea>
-      <button v-on:click="put_comment">post</button>
+    <div class="post-table-div">
+      <table class="post-table" border="1">
+        <tr>
+          <th class="post-header name">Name</th>
+          <th class="post-header comment">Comment</th>
+          <th class="post-header time">Time</th>
+        </tr>
+        <tr v-for="post in posts">
+          <td class="name">{{ post.display_name }}</td>
+          <td class="comment">{{ post.comment }}</td>
+          <td class="time">{{ post.created_at }}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="comment-area" v-if="login">
+      <p class="comment-title">Comment</p>
+      <textarea class="text-comment" v-model="comment"></textarea>
+      <button class="comment-button btn btn-primary" v-on:click="put_comment">post</button>
     </div>
   </div>
 </template>
@@ -72,7 +75,5 @@ export default {
 </script>
 
 <style scoped>
-table {
 
-}
 </style>
