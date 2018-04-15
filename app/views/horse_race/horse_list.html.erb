@@ -16,11 +16,11 @@
         <th class="header align-center">騎手</th>
         <th class="header align-center">率</th>
         <th class="header align-center">人</th>
-        <% @other_users.each do |user| %>
-          <th class="header align-center"><%= truncate(user[:display_name], :length => 3, :omission => '') %></th>
-        <% end %>
         <% if user_signed_in? %>
           <th class="header align-center">予想</th>
+        <% end %>
+        <% @other_users.each do |user| %>
+          <th class="header align-center"><%= truncate(user[:display_name], :length => 3, :omission => '') %></th>
         <% end %>
       </tr>
     </thead>
