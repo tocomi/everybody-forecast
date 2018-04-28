@@ -114,24 +114,21 @@
 
       .comment {
         height: 30px;
+        width: 400px;
         display: table-cell;
         vertical-align: middle;
         font-size: 12px;
       }
     }
   }
-
-  .comment {
-    width: 400px;
-  }
 }
 
 .comment-area {
   background-color: #eeeeee;
-  float: left;
+  float: right;
   height: 120px;
   width: 320px;
-  margin-left: 10px;
+  margin-right: 10px;
 
   .comment-title {
     margin-top: 10px;
