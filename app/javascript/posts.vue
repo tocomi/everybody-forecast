@@ -1,22 +1,19 @@
 <template>
-  <div>
-    <div class="post-table-div">
-      <table class="post-table" border="1">
-        <tr>
-          <th class="post-header name">Name</th>
-          <th class="post-header comment">Comment</th>
-          <th class="post-header time">Time</th>
-        </tr>
-        <tr v-for="post in posts">
-          <td class="name">{{ post.display_name }}</td>
-          <td class="comment">{{ post.comment }}</td>
+  <div class="post-comment-main-div">
+    <div class="post-table-div float-left">
+      <div v-for="post in posts" class="post-div clearfix">
+        <div class="name-time-div float-left">
+          <div class="name">{{ post.display_name }}</div>
           <td class="time">{{ post.created_at }}</td>
-        </tr>
-      </table>
+        </div>
+        <div class="comment-div float-left">
+          <div class="comment">{{ post.comment }}</div>
+        </div>
+      </div>
     </div>
     <div class="comment-area" v-if="login">
       <p class="comment-title">Comment</p>
-      <textarea class="text-comment" v-model="comment"></textarea>
+      <input class="text-comment" v-model="comment" v-on:keyup.ctrl.enter="put_comment" placeholder="post on Ctrl+Enter"></input>
       <button class="comment-button btn btn-primary" v-on:click="put_comment">post</button>
     </div>
   </div>
