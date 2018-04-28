@@ -13,7 +13,7 @@
     </div>
     <div class="comment-area" v-if="login">
       <p class="comment-title">Comment</p>
-      <input class="text-comment" v-model="comment"></input>
+      <input class="text-comment" v-model="comment" v-on:keyup.ctrl.enter="put_comment" placeholder="post on Ctrl+Enter"></input>
       <button class="comment-button btn btn-primary" v-on:click="put_comment">post</button>
     </div>
   </div>
