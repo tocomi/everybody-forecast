@@ -1,10 +1,29 @@
 <div>
-  <div class="horse-list-header jumbotron">
-    <p class="header-race-number"><%= @race_detail[:race_number] %></p>
-    <p class="header-race-name"><%= @race_detail[:race_name] %></p>
-    <%= link_to 'netkeiba', "http://race.netkeiba.com#{params[:target]}", class: 'btn btn-primary header-netkeiba-link', :target=>["_blank"] %>
+  <div class="today-race-list panel panel-info">
+    <div class="panel-heading align-center"><%= @date %></div>
+    <div class="panel-body">
+      <% @race_per_place_list.each do |race_per_place| %>
+        <div class="race-per-date">
+          <p class="race-count"><%= race_per_place[:race_place_info][:date] %></p>
+          <% race_per_place[:race_list].each do |race| %>
+            <%= link_to horse_race_horse_list_path(target: race.url, target_date: params[:target_date], date: params[:date]), class: race.get_race_button_class do %>
+              <%= "#{race.get_race_number}R" %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <table class="table table-bordered table-hover table-striped">
+  <div class="horse-list-header panel panel-info">
+    <div class="panel-body">
+      <p class="header-race-date-age"><%= @race_detail[:date_age] %></p>
+      <p class="header-race-number"><%= @race_detail[:number] %></p>
+      <p class="header-race-name"><%= @race_detail[:name] %></p>
+      <p class="header-race-condition"><%= @race_detail[:condition] %></p>
+      <%= link_to 'netkeiba', "http://race.netkeiba.com#{params[:target]}", class: 'btn btn-default header-netkeiba-link', :target=>["_blank"] %>
+    </div>
+  </div>
+  <table class="table table-bordered table-hover table-striped horse-table">
     <thead>
       <tr>
         <th class="header align-center">枠</th>
