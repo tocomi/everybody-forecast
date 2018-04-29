@@ -24,7 +24,7 @@
         <div class="race-number-div bg-primary">
           <p class="race-number align-center"><%= "#{race.get_race_number}R" %></p>
         </div>
-        <%= link_to horse_race_horse_list_path(target: race.url), class: race.get_race_button_class do %>
+        <%= link_to horse_race_horse_list_path(target: race.url, target_date: params[:target], date: params[:date]), class: race.get_race_button_class do %>
           <%= race.title %><br><%= race.detail %>
         <% end %>
       <% end %>

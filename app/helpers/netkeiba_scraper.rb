@@ -38,7 +38,6 @@ def get_race_list(query)
       detail = node.css(".racedata").inner_text
       url = node.css("dt").css("a").attribute("href").value
       race = Race.new(title, detail, url)
-      logger.debug(race.inspect)
 
       race_list[index] = race
       index = index + 1
@@ -74,9 +73,10 @@ end
 def get_race_detail(doc)
   race_detail = {}
   race_info = doc.css(".mainrace_data")
-  logger.debug(race_info)
-  race_detail[:race_number] = race_info.css(".racedata").css("dt").inner_text
-  race_detail[:race_name] = race_info.css(".racedata").css("dd").css("h1").inner_text
+  race_detail[:number] = race_info.css(".racedata").css("dt").inner_text
+  race_detail[:name] = race_info.css(".racedata").css("dd").css("h1").inner_text
+  race_detail[:condition] = race_info.css(".racedata").css("dd").css("p").css("span").inner_text
+  race_detail[:date_age] = race_info.css(".race_otherdata").css("p")[0].inner_text
   return race_detail
 end
 
