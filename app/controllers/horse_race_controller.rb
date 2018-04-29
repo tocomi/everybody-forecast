@@ -23,6 +23,8 @@ class HorseRaceController < ApplicationController
 
   # horse list page #
   def horse_list()
+    @date = params[:date]
+    get_race_list(params[:target_date])
     get_race_info(adjust_target(params[:target]))
     get_forecast
   end
