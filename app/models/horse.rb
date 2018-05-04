@@ -58,7 +58,7 @@ class Horse
     def get_odds_rank_map(odds_and_rank)
       odds_rank_map = {}
       /\(/ =~ odds_and_rank
-    odds_rank_map[:odds] = $`
+      odds_rank_map[:odds] = $`
       rank_string = $'
       /[0-9]*/ =~ rank_string
       odds_rank_map[:rank] = $&
