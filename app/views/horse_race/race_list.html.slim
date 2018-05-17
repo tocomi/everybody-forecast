@@ -1,0 +1,25 @@
+.page-header.title-header
+  h2.race-list-title
+    = @date
+.race-date-div-wide.panel.panel-info
+  .panel-heading.align-center
+    | 開催日一覧
+  .panel-body
+    - @race_header.each do |header|
+      = link_to header[:date], horse_race_race_list_path(target: header[:url], date: header[:date]), class: 'btn btn-primary race-date-button-wide'
+div
+  - @race_per_place_list.each do |race_per_place|
+    .race-per-place-div.panel.panel-default
+      .panel-heading.align-center
+        p.race-count
+          = race_per_place[:race_place_info][:date]
+        p.race-condition
+          = race_per_place[:race_place_info][:condition]
+      - race_per_place[:race_list].each do |race|
+        .race-number-div.bg-primary
+          p.race-number.align-center
+            = "#{race.get_race_number}R"
+        = link_to horse_race_horse_list_path(target: race.url, target_date: params[:target], date: params[:date]), class: race.get_race_button_class do
+          = race.title
+          br
+          = race.detail
