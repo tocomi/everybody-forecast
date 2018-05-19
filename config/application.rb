@@ -14,5 +14,8 @@ module Tekkaba
     
     # setting timezone
     config.time_zone = 'Asia/Tokyo'
+
+    # change template
+    config.generators.template_engine = :slim  
   end
 end
