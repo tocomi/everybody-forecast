@@ -73,7 +73,7 @@ div
             = "#{horse.rank}"
           - if user_signed_in?
             td.horse-table.forecast
-              - if horse.gate_number.empty? then
+              - if horse.gate_number.nil? then
                 - return
               - @exists_forecast = false
               - @my_forecasts.each do |forecast|
