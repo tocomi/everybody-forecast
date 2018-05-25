@@ -75,7 +75,7 @@ def get_race_detail(doc)
   race_info = doc.css(".mainrace_data")
   race_detail[:number] = race_info.css(".racedata").css("dt").inner_text
   race_detail[:name] = race_info.css(".racedata").css("dd").css("h1").inner_text
-  race_detail[:condition] = race_info.css(".racedata").css("dd").css("p").css("span").inner_text
+  race_detail[:condition] = race_info.css(".racedata").css("dd").css("p")[0].inner_text
   race_detail[:date_age] = race_info.css(".race_otherdata").css("p")[0].inner_text
   return race_detail
 end
