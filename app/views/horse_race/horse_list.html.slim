@@ -53,18 +53,14 @@ div
       - forecast_mark = { 1 => "◎", 2 => "○", 3 => "▲", 4 => "△", 5 => "☆" }
       - @horse_list.each do |horse|
         tr
-          |  <td class="
-          = horse.get_gate_class
-          | ">
-          = "#{horse.gate_number}"
+          td class=horse.get_gate_class
+            = "#{horse.gate_number}"
           td.horse-table.horse-number.text-upright.background-white
             = "#{horse.horse_number}"
           td.horse-table.horse-name
             = "#{horse.name}"
-          |  <td class="
-          = horse.get_sex_class
-          | ">
-          = "#{horse.sex}"
+          td class=horse.get_sex_class
+            = "#{horse.sex}"
           td.horse-table.horse-age.text-upright
             = "#{horse.age}"
           td.horse-table.horse-handi.text-upright
@@ -94,4 +90,4 @@ div
                   = forecast_mark[other_forecast[:forecast]]
 #posts
   posts
-= javascript_pack_tag 'main_vue'
+= javascript_pack_tag 'posts_vue'
