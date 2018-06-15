@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 # setting port
-listen './tmp/socket/unicorn.sock'
+listen '/tmp/socket/unicorn.sock'
 
 # setting pid file
-pid './tmp/pids/unicorn.pid'
+pid '/tmp/pids/unicorn.pid'
 
 # setting worker
 worker_processes 2
@@ -17,7 +17,7 @@ preload_app true
 
 # setting log path
 ROOT = File.dirname(File.dirname(__FILE__))
-stdout_path "#{ROOT}/log/unicorn-stdout.log"
+stdout_path "#{ROOT}/log/unicorn_stdout.log"
 stderr_path "#{ROOT}/log/unicorn_err.log"
 
 # setting behaviour before or after fork
