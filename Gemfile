@@ -16,6 +16,7 @@ gem 'devise',       '4.4.1'
 gem 'webpacker',    github: 'rails/webpacker'
 gem 'slim-rails'
 gem 'html2slim'
+gem 'unicorn'
 
 group :development, :test do
   gem 'sqlite3',    '1.3.11'
