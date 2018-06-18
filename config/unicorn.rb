@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
 # setting port
-listen '/tmp/socket/unicorn.sock'
+# listen '/tmp/socket/unicorn.sock'
 
 # setting pid file
-pid '/tmp/pids/unicorn.pid'
+# pid '/tmp/pids/unicorn.pid'
+
+listen 13000
 
 # setting worker
 worker_processes 2
