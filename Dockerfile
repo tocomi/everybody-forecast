@@ -19,6 +19,8 @@ COPY . /tekkaba
 
 RUN bundle install
 RUN yarn install
+
+RUN chmod u+x bin/rails
 RUN bin/rails db:migrate
 
 EXPOSE 13000
