@@ -19,7 +19,8 @@ COPY . /tekkaba
 
 RUN bundle install
 RUN yarn install
+RUN bin/rails db:migrate
 
-EXPOSE 3000
+EXPOSE 13000
 
 CMD [ "unicorn", "-E", "development", "-c", "config/unicorn.rb" ]
