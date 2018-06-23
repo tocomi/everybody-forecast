@@ -17,8 +17,8 @@ staging:
   adapter: postgresql
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: user
-  password: pass
+  username: tekkaba
+  password: tekkaba
   host: localhost
   timeout: 5000
   database: tekkaba
