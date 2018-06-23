@@ -67,3 +67,10 @@ production:
 
   # Cache manifest.json for performance
   cache_manifest: true
+
+# same to production
+staging:
+  <<: *default
+
+  compile: false
+  cache_manifest: true
