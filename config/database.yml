@@ -14,8 +14,14 @@ development:
   database: db/development.sqlite3
 
 staging:
-  <<: *default
-  database: ../../shared/db/staging.sqlite3
+  adapter: postgresql
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: user
+  password: pass
+  host: localhost
+  timeout: 5000
+  database: tekkaba
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
