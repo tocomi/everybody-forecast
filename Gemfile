@@ -33,7 +33,7 @@ group :development do
   gem 'spring-commands-rspec'
 end
 
-group :production do
+group :staging, :production do
   gem 'pg', '0.18.4'
 end
 
