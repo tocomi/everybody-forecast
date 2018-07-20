@@ -1,14 +1,15 @@
 .title-panel
-  = image_tag 'top_page_001.jpg', class: 'top-page-image'
+  = image_tag 'title_001.jpg', class: 'title-image'
   .title-content
     p.title
       | tekkaba
     p.sub-title
       | ヨロコビを共有しよう
 .contents-panel
-  .race-date-div.panel.panel-info
-    .panel-heading.align-center
+  = image_tag 'contents_001.jpg', class: 'contents-image'
+  .race-date-div
+    p.date-header.align-center
       | 開催日一覧
-    .panel-body
+    p.date-content.align-center
       - @race_header.each do |header|
         = link_to header[:date], horse_race_race_list_path(target: header[:url], date: header[:date]), class: 'btn btn-primary race-date-button'
