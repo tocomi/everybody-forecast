@@ -1,4 +1,4 @@
-div
+.main-content
   .today-race-list.panel.panel-info
     .panel-heading.align-center
       = @date
@@ -88,6 +88,6 @@ div
               - other_forecasts.each do |other_forecast|
                 - if other_forecast[:horse_number].to_i == horse.horse_number.to_i then
                   = forecast_mark[other_forecast[:forecast]]
-#posts
-  posts
-= javascript_pack_tag 'posts_vue'
+  #posts
+    posts
+  = javascript_pack_tag 'posts_vue'
