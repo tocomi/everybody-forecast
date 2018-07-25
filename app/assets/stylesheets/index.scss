@@ -1,27 +1,92 @@
 
+// darken background image
+.title-panel::before {
+  background-color: rgba(0,0,0,0.5);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+}
+
 .title-panel {
   position: relative;
+  height: 450px;
+  margin-top: -20px;
+
+  .title-image {
+    height: inherit;
+    width: 100%;
+    object-fit: cover;
+  }
 
   .title {
     position: absolute;
-    top: 270px;
-    left: 50px;
-    font-size: 70px;
+    top: 45%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin: 0;
+    padding: 0;
+    font-size: 90px;
+    letter-spacing: 10px;
+    color: white;
+    -webkit-text-stroke:.9px gray;
+  }
+
+  .sub-title {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
     color: white;
     -webkit-text-stroke:.9px gray;
   }
 }
 
-.race-date-div {
-  margin-top: 20px;
-  width: 300px;
+.contents-panel::before {
+  background-color: rgba(0,0,0,0.5);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
 }
 
-.race-date-button {
-  margin-top: 5px;
-  width: 270px;
+.contents-panel {
+  position: relative;
+  height: 300px;
+  width: 100%;
+
+  .contents-image {
+    height: inherit;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .race-date-div {
+    position: absolute;
+    top: 100px;
+    width: 100%;
+  }
+
+  .date-header {
+    font-size: 30px;
+    color: #EEE;
+  }
+  
+  .race-date-button {
+    margin: 10px;
+    width: 120px;
+  }
+  
 }
 
-.align-center {
-  text-align: center;
-}

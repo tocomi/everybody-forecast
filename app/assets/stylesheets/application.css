@@ -36,3 +36,13 @@
 .input-form {
   margin-top: 20px;
 }
+
+/* Common */
+.align-center {
+  text-align: center;
+}
+
+.main-content {
+  margin-right: 15%;
+  margin-left: 15%;
+}
